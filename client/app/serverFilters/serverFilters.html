@@ -1,0 +1,40 @@
+<div id="filters">
+	<div class="filter-entrance"
+			 ng-if="!filteringActive"
+			 ng-click="setFilteringActive(true)">
+		Filter Servers
+	</div>
+	<div ng-if="filteringActive">
+		<div class="filtering-groups-selector">
+			<div ng-repeat="group in filterTracker"
+					 class="filtering-group"
+					 ng-class="{active: group.active}"
+					 ng-click="toggleFilterGroup(group)">
+				{{group.name}}
+			</div>
+			<div class="reset-filters-button"
+					 ng-click="resetAllFiltering()">x</div>
+		</div>
+		<div class="filter-group"
+				 ng-if="filterTracker.os.active">
+			<div class="filter-item"
+					 ng-repeat="filter in filterTracker.os.tags"
+					 ng-class="{active: filter.value}"
+					 ng-click="toggleFilter(filter)">{{filter.name}}</div>
+		</div>
+		<div class="filter-group"
+				 ng-if="filterTracker.team.active">
+			<div class="filter-item"
+					 ng-repeat="filter in filterTracker.team.tags"
+					 ng-class="{active: filter.value}"
+					 ng-click="toggleFilter(filter)">{{filter.name}}</div>
+		</div>
+		<div class="filter-group"
+				 ng-if="filterTracker.version.active">
+			<div class="filter-item"
+					 ng-repeat="filter in filterTracker.version.tags"
+					 ng-class="{active: filter.value}"
+					 ng-click="toggleFilter(filter)">{{filter.name}}</div>
+		</div>
+	</div>
+</div>

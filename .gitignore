@@ -1,0 +1,7 @@
+client/node_modules/
+client/app/bower_components/
+client/app/css/main.css
+client/build
+
+server/node_modules/
+server/data

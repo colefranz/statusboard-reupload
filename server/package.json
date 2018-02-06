@@ -1,0 +1,27 @@
+{
+  "name": "statusboard",
+  "version": "1.0.0",
+  "description": "QA Statusboard - IMPROVED",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/colefranzcsi/statusboard.git"
+  },
+  "author": "Sara Rathje + Cole Franz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/colefranzcsi/statusboard/issues"
+  },
+  "homepage": "https://github.com/colefranzcsi/statusboard#readme",
+  "dependencies": {
+    "express": "^4.14.0",
+    "mongodb": "^2.2.12",
+    "node-wmi": "0.0.4",
+    "q": "^1.4.1",
+    "ssh2": "^0.5.4",
+    "xml2js": "^0.4.17"
+  }
+}

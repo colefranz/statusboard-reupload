@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>QA Statusboard</title>
+		<link rel="stylesheet" href="css/main.css">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	</head>
+	<body ng-app="statusboard" ng-controller="StatusBoardController">
+		<script src="bower_components/angular/angular.min.js"></script>
+		<script src="bower_components/lodash/lodash.js"></script>
+		<script src="app.js"></script>
+		<script src="serverDirective/serverDirective.js"></script>
+		<script src="newServerDirective/newServerDirective.js"></script>
+		<script src="serverFilters/serverFiltersDirective.js"></script>
+		<div id="statusboard"
+				 ng-class="{'modal-active': modalState.active}">
+			<div id="main-wrapper">
+				<div id="header">
+					<div class="title">QA-STATUSBOARD</div>
+					<button id="new-server-button" ng-click="handleNewServerModal()"
+						title="{{tooltips.addServer}}">+</button>
+					<!-- TODO: the icon should be added in as an inline svg instead of an img -->
+					<button id="reresh-servers-button" ng-click="refreshServers()"
+						title="{{tooltips.refreshServers}}">
+						<img src="svg/reload-icon.svg" />
+				    </button> 
+				</div>
+				<div id="servers-container">
+					<server-filters></server-filters>
+					<server ng-repeat="server in servers | orderBy: 'name' | filter:activeFilters track by $index"
+										server="server"></server>
+				</div>
+			</div>
+			<div id="modal">
+				<new-server></new-server>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,105 @@
+<div class="server-wrapper"
+		 ng-class="{active: state.active}">
+	<div class="expand-toggle"
+			ng-class="server.status"
+			ng-click="toggleActive()"
+			title="{{state.active ? tooltips.collapseToggle : tooltips.expandToggle}}">
+		<div class="control-button" ng-if="state.active" 
+			title="{{tooltips.collapseToggle}}">-</div>
+		<div class="control-button"
+				ng-if="!state.active">+</div>
+	</div>
+	<div class="server-body">
+		<div class="server-header">
+			<div class="delete-server-button server-button" ng-click="confirmDeleteServer()" 
+				title="{{tooltips.deleteServer}}">x</div>
+			<p class="server-name"
+				 ng-click="handleLaunchServerPage()"
+				 title="{{tooltips.title}}">{{server.name}}</p>
+			 <p class="minor">({{server.ip}})</p>
+		</div>
+		<div ng-if="server.status==='bad'">
+			<div class="server-attr">
+				<p class="attr-name">ERROR: </p>
+				<p class="attr">{{server.error}}</p>
+			</div>
+
+			<div class="server-attr">
+				<p class="attr-name">Team: </p>
+				<input type="text" class="attr" ng-model="server.team">
+			</div>
+
+			<div class="server-attr">
+				<p class="attr-name">Location: </p>
+				<input type="text" class="attr" ng-model="server.location">
+			</div>
+		</div>
+		<div ng-if="server.status==='good'">
+			<div ng-if="!state.active">
+				<div class="server-attr">
+					<p class="attr-name">Team: </p>
+					<input type="text" class="attr" ng-model="server.team">
+				</div>
+				<div class="server-attr">
+					<p class="attr-name">OS: </p>
+					<p class="attr">{{server.os}}</p>
+				</div>
+			</div>
+			<div ng-if="state.active">
+				<div class="server-attr">
+					<p class="attr-name">Team: </p>
+					<input type="text" class="attr" ng-model="server.team">
+				</div>
+
+				<div class="server-attr">
+					<p class="attr-name">Location: </p>
+					<input type="text" class="attr" ng-model="server.location">
+				</div>
+
+				<div class="server-attr">
+					<p class="attr-name">Operating System: </p>
+					<p class="attr">{{server.os}}</p>
+				</div>
+
+				<div class="server-attr">
+					<p class="attr-name">Source Branch: </p>
+					<p class="attr">{{server.sourceBranch}}</p>
+				</div>
+
+				<div class="server-attr">
+					<p class="attr-name">Source Date: </p>
+					<p class="attr">{{server.sourceDate}}</p>
+				</div>
+
+				<div class="server-attr">
+					<p class="attr-name">PureWeb Version: </p>
+					<p class="attr">{{server.purewebVersion}}</p>
+					</div>
+
+				<div class="server-attr">
+					<p class="attr-name">Repositories: </p>
+					<p class="attr list" ng-repeat="repo in server.repos">{{repo}}</p>
+				</div>
+
+				<div class="server-attr">
+					<p class="attr-name">GPU Information:</p>
+					<p class="attr list">Card: {{server.gpuType}}</p>
+					<p class="attr list">Version: {{server.gpuDriver}}</p>
+				</div>
+			</div>
+			<div class="server-attr">
+				<textarea
+						placeholder="Add Comments"
+						ng-model="server.comments">		
+				</textarea>
+			</div>
+			<div class="server-attr version-info">
+				<p class="attr">{{server.pluginName}} {{server.version}}</p>
+				<a ng-if="server.hash.indexOf('http') !== -1"
+					 ng-click="launchURL(server.hash)" 
+					 title="{{tooltips.serverRevision}}">({{server.sourceRevision}})</a>
+				<p ng-if="server.hash.indexOf('http') === -1">({{server.sourceRevision}})</p>
+			</div>
+		</div>
+	</div>
+</div>

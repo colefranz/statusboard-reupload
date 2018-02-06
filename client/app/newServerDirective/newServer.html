@@ -1,0 +1,24 @@
+<div class="new-server" ng-submit="submitForm()">
+	<div class="close-button" ng-click="closeModal()">
+	x
+	</div>
+	<form>
+		<div class="input-container">
+			<label for="name">Server Name: </label>
+			<input name="name" placeholder="QA-Starbuck" ng-model="form.name" type="text">
+		</div>
+		<div class="input-container">
+			<label for="team">Team: </label>
+			<input name="team" placeholder="Hydra" ng-model="form.team" type="text">
+		</div>
+
+		<div class="input-container">
+			<label for="location">Location: </label>
+			<input name="location" placeholder="Bat Cave" ng-model="form.location" type="text">
+		</div>
+
+	  <div class="input-container">
+	    <input type="submit" value="Submit">
+	  </div>
+	</form>
+</div>
